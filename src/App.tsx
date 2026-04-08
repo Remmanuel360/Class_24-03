@@ -8,6 +8,7 @@ import Home from './Home';
 import Original from './Original';
 import Usuario from './Usuario';
 
+
 function App() {
   
   
@@ -25,7 +26,7 @@ function App() {
           </nav>
         <Routes>
           <Route path='/' element={<Home/>}/>
-          <Route path='/Equipo' element={<Equipo/>}/>
+          <Route path='/Equipo/:equipo' element={<Equipo/>}/>
           <Route path='/Favoritos' element={<Favoritos/>}/>
           <Route path='/Informativa' element={<Informativa/>}/>
           <Route path='/Original' element={<Original/>}/>
