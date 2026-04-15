@@ -31,10 +31,15 @@ interface Ranking {
   points: number
   matchesPlayed: number
 }
+type FiltroTipo = 'posiciones' | 'goleador' | 'asistencias' | 'amarillas' | 'atajadas'
+
 
 function Home() {
   const [ranking, setRanking] = useState<Ranking[]>([])
   const [title, setTitle] = useState('')
+  const [filtro, setFiltro] = useState<FiltroTipo>('posiciones')
+  const filtros: FiltroTipo[] = ['posiciones', 'goleador', 'asistencias', 'amarillas', 'atajadas'];
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -53,6 +58,18 @@ function Home() {
   }, [])
 
   return (
+  <>
+    <div className="filtros">
+        {filtros.map((onestat) => (
+          <button
+            key={onestat}
+            onClick={() => setFiltro(onestat)}
+            className={filtro === onestat ? 'activo' : ''}
+          >
+            {onestat}
+          </button>
+        ))}
+      </div>
     <div className="tabla-container">
       <h2>{title}</h2>
       <table className="tabla-posiciones">
@@ -77,6 +94,7 @@ function Home() {
         </tbody>
       </table>
     </div>
+  </>
   )
 }
 
