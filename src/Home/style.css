@@ -1,0 +1,167 @@
+.tabla-container{
+
+max-width:1100px;
+
+margin:70px auto 140px;
+
+padding:30px;
+
+background:
+linear-gradient(
+145deg,
+#16212e,
+#243b55
+);
+
+border-radius:18px;
+
+color:#e8f6ff;
+
+border:2px solid #7dff72;
+
+box-shadow:
+0 0 20px rgba(125,255,114,.25),
+0 0 40px rgba(0,180,255,.15);
+
+}
+
+.tabla-container h2{
+
+text-align:center;
+
+color:#7dff72;
+
+margin-bottom:30px;
+
+text-shadow:
+0 0 10px rgba(125,255,114,.7);
+
+}
+
+input{
+
+display:block;
+
+width:60%;
+
+margin:40px auto 30px;
+
+padding:14px;
+
+border:none;
+
+border-radius:12px;
+
+outline:none;
+
+background:#203548;
+
+color:#e8f6ff;
+
+font-size:16px;
+
+}
+
+input::placeholder{
+
+color:#9fc7db;
+
+}
+
+.tabla-personajes{
+
+width:100%;
+
+border-collapse:collapse;
+
+overflow:hidden;
+
+}
+
+.tabla-personajes th{
+
+padding:16px;
+
+background:
+rgba(125,255,114,.12);
+
+color:#7dff72;
+
+}
+
+.tabla-personajes td{
+
+padding:16px;
+
+text-align:center;
+
+border-bottom:
+1px solid
+rgba(255,255,255,.08);
+
+}
+
+.tabla-personajes tr{
+
+transition:.2s;
+
+}
+
+.tabla-personajes tr:hover{
+
+background:
+rgba(125,255,114,.06);
+
+}
+
+.tabla-personajes img{
+
+width:60px;
+
+border-radius:12px;
+
+box-shadow:
+0 0 10px rgba(0,0,0,.3);
+
+}
+
+.favorito,
+.favorito-activo{
+
+background:none;
+
+border:none;
+
+font-size:26px;
+
+cursor:pointer;
+
+transition:.2s;
+
+}
+
+.favorito{
+
+color:#6b7785;
+
+}
+
+.favorito-activo{
+
+color:#ffd93b;
+
+filter:
+drop-shadow(
+0 0 8px
+gold
+);
+
+}
+
+.favorito:hover,
+.favorito-activo:hover{
+
+transform:
+scale(1.15);
+
+}

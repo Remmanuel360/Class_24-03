@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import './style.css'
 
 interface Personajes {
   id: number
@@ -10,31 +11,52 @@ interface Personajes {
 }
 
 function Home() {
+
   const [personajes, setPersonajes] = useState<Personajes[]>([])
-  const [title, setTitle] = useState('')
+  const [favoritos, setFavoritos] = useState<Personajes[]>([])
   const [busqueda, setBusqueda] = useState('')
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch(`https://rickandmortyapi.com/api/character`)
-        const data = await res.json()
 
-        setPersonajes(data.results)
-        setTitle("Personajes de Rick and Morty")
-      } catch (error) { 
-        console.error('Error cargando datos:', error)
-      }
-    }
+    fetch('https://rickandmortyapi.com/api/character')
+      .then(r => r.json())
+      .then(data => setPersonajes(data.results))
 
-    fetchData()
+    setFavoritos(
+      JSON.parse(
+        localStorage.getItem('favoritos') || '[]'
+      )
+    )
+
   }, [])
 
-  const personajesFiltrados = personajes.filter((p) =>
-    busqueda.length < 3
-      ? true
-      : p.name.toLowerCase().includes(busqueda.toLowerCase())
-  )
+  const toggleFavorito = (personaje: Personajes) => {
+
+    const existe =
+      favoritos.some(
+        f => f.id === personaje.id
+      )
+
+    const nuevos =
+      existe
+        ? favoritos.filter(f => f.id !== personaje.id)
+        : [...favoritos, personaje]
+
+    setFavoritos(nuevos)
+
+    localStorage.setItem(
+      'favoritos',
+      JSON.stringify(nuevos)
+    )
+
+  }
+
+  const personajesFiltrados =
+    personajes.filter(p =>
+      busqueda.length < 3
+        ? true
+        : p.name.toLowerCase().includes(busqueda.toLowerCase())
+    )
 
   return (
     <>
@@ -42,12 +64,9 @@ function Home() {
         type="text"
         placeholder="Buscar personaje..."
         value={busqueda}
-        onChange={(e) => setBusqueda(e.target.value)}
-      />
-
+        onChange={e => setBusqueda(e.target.value)}/>
       <div className="tabla-container">
-        <h2>{title}</h2>
-
+        <h2>Personajes de Rick and Morty</h2>
         <table className="tabla-personajes">
           <thead>
             <tr>
@@ -57,10 +76,11 @@ function Home() {
               <th>Especie</th>
               <th>Estado</th>
               <th>Género</th>
+              <th>⭐</th>
             </tr>
           </thead>
           <tbody>
-            {personajesFiltrados.map((p) => (
+            {personajesFiltrados.map(p => (
               <tr key={p.id}>
                 <td>{p.id}</td>
                 <td>
@@ -70,6 +90,13 @@ function Home() {
                 <td>{p.species}</td>
                 <td>{p.status}</td>
                 <td>{p.gender}</td>
+                <td>
+                  <button
+                    type="button"
+                    className={favoritos.some(f => f.id === p.id) ? 'favorito-activo' : 'favorito'}
+                    onClick={() => toggleFavorito(p)}
+                  >★</button>
+                </td>
               </tr>
             ))}
           </tbody>
@@ -77,6 +104,7 @@ function Home() {
       </div>
     </>
   )
+
 }
 
 export default Home

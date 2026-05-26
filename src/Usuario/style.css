@@ -1,0 +1,79 @@
+.usuario{
+
+max-width:450px;
+
+margin:120px auto;
+
+padding:35px;
+
+background:
+linear-gradient(
+145deg,
+#16212e,
+#243b55
+);
+
+border-radius:18px;
+
+text-align:center;
+
+border:2px solid #7dff72;
+
+box-shadow:
+0 0 20px rgba(125,255,114,.25);
+
+}
+
+.usuario h2{
+
+color:#7dff72;
+
+margin-bottom:25px;
+
+}
+
+.usuario input{
+
+width:100%;
+
+padding:14px;
+
+margin:10px 0;
+
+border:none;
+
+border-radius:12px;
+
+background:#203548;
+
+color:white;
+
+box-sizing:border-box;
+
+}
+
+.usuario button{
+
+width:100%;
+
+margin-top:12px;
+
+padding:12px;
+
+border:none;
+
+border-radius:12px;
+
+cursor:pointer;
+
+background:#7dff72;
+
+}
+
+.secundario{
+
+background:#2f465d !important;
+
+color:white;
+
+}

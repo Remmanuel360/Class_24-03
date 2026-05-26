@@ -2,7 +2,6 @@ import {BrowserRouter as Router, Route, Routes, Link} from 'react-router';
 import './App.css'
 
 import Informativa from './Informativa';
-import Equipo from './Equipo';
 import Favoritos from './Favoritos';
 import Home from './Home';
 import Original from './Original';
@@ -17,7 +16,6 @@ function App() {
     <>
       <Router>
           <nav className='c-menu'>
-          <Link to="/Equipo">Equipo</Link>
           <Link to="/Favoritos">Favoritos</Link>
           <Link to="/Home">Home</Link>
           <Link to="/Informativa">Informativa</Link>
@@ -25,8 +23,7 @@ function App() {
           <Link to="/Usuario">Usuario</Link>
           </nav>
         <Routes>
-          <Route path='/' element={<Home/>}/>
-          <Route path='/Equipo/:equipo' element={<Equipo/>}/>
+          <Route path='/Home' element={<Home/>}/>
           <Route path='/Favoritos' element={<Favoritos/>}/>
           <Route path='/Informativa' element={<Informativa/>}/>
           <Route path='/Original' element={<Original/>}/>

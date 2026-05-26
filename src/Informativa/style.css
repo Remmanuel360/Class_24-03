@@ -1,0 +1,44 @@
+.informativa{
+max-width:700px;
+margin:120px auto;
+padding:35px;
+
+background:
+linear-gradient(
+145deg,
+#16212e,
+#243b55
+);
+
+border-radius:18px;
+
+text-align:center;
+
+color:#e8f6ff;
+
+border:2px solid #7dff72;
+
+box-shadow:
+0 0 20px rgba(125,255,114,.25),
+0 0 40px rgba(0,180,255,.15);
+}
+
+.informativa h2{
+margin-bottom:25px;
+
+color:#7dff72;
+
+font-size:32px;
+
+text-shadow:
+0 0 10px rgba(125,255,114,.7);
+}
+
+.informativa p{
+line-height:1.8;
+margin-bottom:20px;
+
+color:#cdefff;
+
+font-size:17px;
+}
